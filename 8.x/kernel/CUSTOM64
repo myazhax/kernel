@@ -1,0 +1,99 @@
+#
+# Kernel configuration for FreeBSD 8.x amd64
+
+cpu	HAMMER
+ident	CUSTOM
+
+options	SCHED_ULE
+options	PREEMPTION
+options	INET
+options	INET6
+options	SCTP
+options	FFS
+options	SOFTUPDATES
+options	UFS_ACL
+options	UFS_DIRHASH
+options	UFS_GJOURNAL
+options	GEOM_MIRROR
+options	GEOM_PART_GPT
+options	GEOM_LABEL
+options	COMPAT_43TTY
+options	COMPAT_FREEBSD32
+options	SCSI_DELAY=3000
+options	KTRACE
+options	STACK
+options	SYSVSHM
+options	SYSVMSG
+options	SYSVSEM
+options	P1003_1B_SEMAPHORES
+options	_KPOSIX_PRIORITY_SCHEDULING
+options	PRINTF_BUFR_SIZE=128
+options	KBD_INSTALL_CDEV
+options	HWPMC_HOOKS
+options	AUDIT
+options	MAC
+options	FLOWTABLE
+options	HZ=1000
+
+# Equal-Cost Multi-Path routing.
+options	ROUTETABLES=4
+
+# Make an SMP-capable kernel by default
+options	SMP
+
+# CPU frequency control
+device	cpufreq
+
+# Bus support.
+device	acpi
+device	pci
+
+# ATA and ATAPI devices
+device	ata
+device	atadisk
+device	ataraid
+device	atapicd
+options	ATA_STATIC_ID
+device	twa
+
+# SCSI peripherals
+device	scbus
+device	ch
+device	da
+device	cd
+device	pass
+
+# atkbdc0 controls both the keyboard and the PS/2 mouse
+device	atkbdc
+device	atkbd
+device	psm
+device	kbdmux
+device	vga
+
+# syscons is the default console driver, resembling an SCO console
+device	sc
+device	agp
+
+# PCI Ethernet NICs that use the common MII bus controller code.
+# NOTE: Be sure to keep the 'device miibus' line in order to use these NICs!
+device	miibus
+device	em
+device	igb
+
+# Pseudo devices.
+device	loop
+device	random
+device	ether
+device	pty
+device	md
+device	bpf
+
+# USB support
+device	uhci
+device	ohci
+device	ehci
+device	usb
+device	uhid
+device	ukbd
+device	umass
+device	ums

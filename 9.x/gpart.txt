@@ -1,0 +1,119 @@
+=>       34  312499933  ada0  GPT  (149G)
+         34        128     1  freebsd-boot  (64k)
+        162  308281344     2  freebsd-ufs  (147G)
+  308281506    4216832     3  freebsd-swap  (2.0G)
+  312498338       1629        - free -  (814k)
+
+=>        63  1250263665  ada1  MBR  (596G)
+          63  1250258562     1  freebsd  [active]  (596G)
+  1250258625        5103        - free -  (2.5M)
+
+=>         0  1250258562  ada1s1  BSD  (596G)
+           0   167772160       1  freebsd-ufs  (80G)
+   167772160     4194304       2  freebsd-swap  (2.0G)
+   171966464  1078292098       4  freebsd-ufs  (514G)
+
+
+toybox# gpart list ada0
+Geom name: ada0
+modified: false
+state: OK
+fwheads: 16
+fwsectors: 63
+last: 312499966
+first: 34
+entries: 128
+scheme: GPT
+Providers:
+1. Name: ada0p1
+   Mediasize: 65536 (64k)
+   Sectorsize: 512
+   Stripesize: 0
+   Stripeoffset: 17408
+   Mode: r0w0e0
+   rawuuid: 2887d3b2-6c01-11e1-8049-00167693b8c9
+   rawtype: 83bd6b9d-7f41-11dc-be0b-001560b84f0f
+   label: boot
+   length: 65536
+   offset: 17408
+   type: freebsd-boot
+   index: 1
+   end: 161
+   start: 34
+2. Name: ada0p2
+   Mediasize: 157840048128 (147G)
+   Sectorsize: 512
+   Stripesize: 0
+   Stripeoffset: 82944
+   Mode: r1w1e2
+   rawuuid: 45ad7374-6c01-11e1-8049-00167693b8c9
+   rawtype: 516e7cb6-6ecf-11d6-8ff8-00022d09712b
+   label: root
+   length: 157840048128
+   offset: 82944
+   type: freebsd-ufs
+   index: 2
+   end: 308281505
+   start: 162
+3. Name: ada0p3
+   Mediasize: 2159017984 (2.0G)
+   Sectorsize: 512
+   Stripesize: 0
+   Stripeoffset: 3221308416
+   Mode: r1w1e1
+   rawuuid: 58af1213-6c01-11e1-8049-00167693b8c9
+   rawtype: 516e7cb5-6ecf-11d6-8ff8-00022d09712b
+   label: swap
+   length: 2159017984
+   offset: 157840131072
+   type: freebsd-swap
+   index: 3
+   end: 312498337
+   start: 308281506
+Consumers:
+1. Name: ada0
+   Mediasize: 160000000000 (149G)
+   Sectorsize: 512
+   Mode: r2w2e5
+
+toybox# gpart list ada1
+Geom name: ada1
+modified: false
+state: OK
+fwheads: 16
+fwsectors: 63
+last: 1250263727
+first: 63
+entries: 4
+scheme: MBR
+Providers:
+1. Name: ada1s1
+   Mediasize: 640132383744 (596G)
+   Sectorsize: 512
+   Stripesize: 0
+   Stripeoffset: 32256
+   Mode: r1w1e2
+   attrib: active
+   rawtype: 165
+   length: 640132383744
+   offset: 32256
+   type: freebsd
+   index: 1
+   end: 1250258624
+   start: 63
+Consumers:
+1. Name: ada1
+   Mediasize: 640135028736 (596G)
+   Sectorsize: 512
+   Mode: r1w1e3
+
+toybox# gpart status 
+   Name  Status  Components
+ ada0p1      OK  ada0
+ ada0p2      OK  ada0
+ ada0p3      OK  ada0
+ ada1s1      OK  ada1
+ada1s1a      OK  ada1s1
+ada1s1b      OK  ada1s1
+ada1s1d      OK  ada1s1
+

@@ -1,0 +1,85 @@
+# 
+# $FreeBSD: 9.x/i386
+ 
+cpu I686_CPU
+ident CUSTOM32bit
+ 
+options SCHED_ULE
+options PREEMPTION
+options INET
+options INET6
+options SCTP
+options FFS
+options SOFTUPDATES
+options UFS_ACL
+options UFS_DIRHASH
+options UFS_GJOURNAL
+options MD_ROOT
+options GEOM_PART_GPT
+options SCSI_DELAY=5000
+options KTRACE
+options STACK
+options SYSVSHM
+options SYSVMSG
+options SYSVSEM
+options _KPOSIX_PRIORITY_SCHEDULING
+options PRINTF_BUFR_SIZE=128
+options KBD_INSTALL_CDEV
+options HWPMC_HOOKS
+options AUDIT
+options MAC
+options KDB
+options KDB_TRACE
+options DEVICE_POLLING
+options SMP
+
+device apic
+device cpufreq
+device acpi
+device pci
+
+# ATA
+device ahci
+device ata
+options ATA_CAM
+options ATA_STATIC_ID
+ 
+# ATA/SCSI
+device scbus
+device ch
+device da
+device cd
+device pass
+device ses
+ 
+# kbd/vga/psm
+device atkbdc
+device atkbd
+device psm
+device kbdmux
+device vga
+device agp
+ 
+# syscons
+device sc
+options SC_PIXEL_MODE
+ 
+# suspend/resume support
+device pmtimer
+ 
+# Pseudo devices
+device loop
+device ether
+device bpf
+ 
+# USB
+device uhci
+device ohci
+device ehci
+device xhci
+device usb
+device uhid
+device ukbd
+device ulpt
+device umass
+device ums

@@ -1,0 +1,5 @@
+# Device	Mountpoint	FStype	Options	Dump	Pass#
+/dev/label/root	/		ufs	rw,noatime	1	1
+/dev/label/swap	none		swap	sw	0	0
+/dev/ada1s1a	/disk1/root	ufs	rw,noatime,noauto	2	2
+/dev/ada1s1d	/disk1/home	ufs	rw,noatime,noauto	2	2
